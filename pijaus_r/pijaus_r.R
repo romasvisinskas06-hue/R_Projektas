@@ -189,8 +189,7 @@ p3 <- ggplot(metai_abu, aes(x = metai, y = proc, color = salis, group = salis)) 
   scale_x_continuous(breaks = seq(2010, 2024, by = 2)) +
   ylim(0,100) +
   labs(
-    title    = "Būsto perpildymas: Lietuva ir ES vidurkis",
-    subtitle = "Gyventojų dalis, gyvenančių perpildytuose būstuose",
+    title = "Gyventojų dalis, gyvenančių perpildytuose būstuose",
     x        = "Metai",
     y        = "Gyventojų dalis (%)",
     color    = NULL
