@@ -136,7 +136,7 @@ p2 <- ggplot(mdes, aes(x = metai, y = proc, fill = salis)) +
   geom_col(position = "dodge", width = 0.7) +
   scale_fill_manual(values = c("Lietuva" = "#FF9800", "ES vidurkis" = "#9E9E9E")) +
   scale_x_continuous(breaks = 2015:2023) +
-  scale_y_continuous(labels = function(x) paste0(x, "%")) +
+  ylim(0,100) +
   labs(
     title    = "Finansinis nesaugumas",
     subtitle = "Namų ūkių dalis, negalinti padengti netikėtų išlaidų",
