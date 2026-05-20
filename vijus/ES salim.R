@@ -1,23 +1,19 @@
-
 library(readr)
 library(dplyr)
 library(ggplot2)
 library(readxl)
 
+gyvenimo_pasitenkinimas <- read_excel(
+  "~/R programavimas/ES gyvenimo pasitenkinimas 1 grafikas.xlsx", 
+  sheet = "Sheet 1", 
+  skip = 12
+)
 
-gyvenimo_pasitenkinimas <- read_excel("ES gyvenimo pasitenkinimas 1 grafikas.xlsx", 
-                          sheet = "Sheet 1", skip = 12)
-
-
-
-skurdo_rizika <- read_excel("Skurdo rizika 1 grafika.xlsx", 
-                        sheet = "Sheet 1", skip = 12)
-
-
-
-
-
-
+skurdo_rizika <- read_excel(
+  "~/R programavimas/Skurdo rizika 1 grafikas.xlsx", 
+  sheet = "Sheet 1", 
+  skip = 12
+)
 
 names(gyvenimo_pasitenkinimas)[1] <- "Salis"
 names(skurdo_rizika)[1] <- "Salis"
@@ -44,12 +40,11 @@ poverty <- skurdo_rizika %>%
   select(Salis, Skurdo_rizika)
 
 duomenys_kor <- inner_join(life, poverty, by = "Salis") %>%
-  filter(!is.na(Gyvenimo_pasitenkinimas),
-         !is.na(Skurdo_rizika)) %>%
+  filter(
+    !is.na(Gyvenimo_pasitenkinimas),
+    !is.na(Skurdo_rizika)
+  ) %>%
   mutate(Grupe = ifelse(Salis == "Lithuania", "Lietuva", "Kitos ES šalys"))
-
-library(dplyr)
-library(ggplot2)
 
 r <- cor(
   duomenys_kor$Skurdo_rizika,
@@ -68,12 +63,25 @@ ggplot(duomenys_kor, aes(x = Skurdo_rizika, y = Gyvenimo_pasitenkinimas)) +
     color = "red",
     size = 4
   ) +
-  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed", linewidth = 1) +
+  geom_smooth(
+    method = "lm",
+    se = FALSE,
+    color = "black",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  geom_text(
+    data = duomenys_kor %>% filter(Salis != "Lithuania"),
+    aes(label = Salis),
+    vjust = -0.8,
+    size = 3
+  ) +
   geom_text(
     data = duomenys_kor %>% filter(Salis == "Lithuania"),
-    aes(label = "Lietuva"),
+    aes(label = "Lithuania"),
     vjust = -1,
-    fontface = "bold"
+    fontface = "bold",
+    size = 4
   ) +
   annotate(
     "text",
@@ -88,8 +96,7 @@ ggplot(duomenys_kor, aes(x = Skurdo_rizika, y = Gyvenimo_pasitenkinimas)) +
     title = "Skurdo rizikos ir gyvenimo pasitenkinimo ryšys ES šalyse",
     subtitle = "Lietuvos padėtis ES šalių kontekste, 2024 m.",
     x = "Skurdo rizikos lygis (%)",
-    y = "Gyvenimo pasitenkinimas (0–10)",
-    caption = "Šaltinis: Eurostat, ilc_pw01 ir ilc_li02"
+    y = "Gyvenimo pasitenkinimas (0–10)"
   ) +
   theme_minimal()
 
@@ -146,6 +153,13 @@ ggplot(grafiko_duom, aes(x = Year, y = Reiksme, color = Grupe)) +
     color = ""
   ) +
   theme_minimal()
+
+
+
+
+
+
+
 
 
 
