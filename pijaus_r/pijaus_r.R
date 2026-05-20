@@ -138,7 +138,7 @@ p2 <- ggplot(mdes, aes(x = metai, y = proc, fill = salis)) +
   scale_x_continuous(breaks = 2015:2023) +
   scale_y_continuous(labels = function(x) paste0(x, "%")) +
   labs(
-    title    = "Finansinis nesaugumas: negalėjimas padengti netikėtų išlaidų",
+    title    = "Finansinis nesaugumas",
     subtitle = "Namų ūkių dalis, negalinti padengti netikėtų išlaidų",
     x        = "Metai",
     y        = "namų ūkių (%)",
