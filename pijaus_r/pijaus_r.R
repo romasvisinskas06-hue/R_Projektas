@@ -92,9 +92,8 @@ p1 <- ggplot(df1, aes(x = metai, y = indeksas, color = rodiklis, group = rodikli
   scale_x_continuous(breaks = 2015:2023) +
   labs(
     title    = "Pajamos, būsto kainos ir nuoma Lietuvoje",
-    subtitle = "Indeksas: 2015 = 100",
     x        = "Metai",
-    y        = "Indeksas (2015 = 100)",
+    y        = "Indeksas",
     color    = NULL
   ) +
   theme_minimal(base_size = 13) +
