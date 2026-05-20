@@ -5,12 +5,12 @@ library(ggplot2)
 library(readxl)
 
 
-gyvenimo_pasitenkinimas <- read_excel("~/R programavimas/ES gyvenimo pasitenkinimas 1 grafikas.xlsx", 
+gyvenimo_pasitenkinimas <- read_excel("ES gyvenimo pasitenkinimas 1 grafikas.xlsx", 
                           sheet = "Sheet 1", skip = 12)
 
 
 
-skurdo_rizika <- read_excel("~/R programavimas/Skurdo rizika 1 grafikas.xlsx", 
+skurdo_rizika <- read_excel("Skurdo rizika 1 grafika.xlsx", 
                         sheet = "Sheet 1", skip = 12)
 
 
