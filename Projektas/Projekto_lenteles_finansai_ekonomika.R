@@ -122,7 +122,7 @@ ggplot(duomenys_lt, aes(x = Metai, y = Reiksme)) +
     
     
     
-    df <- read.csv("OECD_issilavinimas.csv")
+    df <- read.csv("issilavinimas.csv")
   
     ggplot(df, aes(x = ATTAINMENT_LEV, y = OBS_VALUE, fill = INCOME)) +
       geom_col() +
@@ -136,10 +136,9 @@ ggplot(duomenys_lt, aes(x = Metai, y = Reiksme)) +
       scale_fill_discrete(labels = c(
         "MILE_50" = "Žemiau 50% medianos",
         "MIGT_50_LE100" = "50-100% medianos",
-        "MIGT_100" = "Aukščiau 100% medianos",
         "MIGT_150_LE200" = "150-200% medianos",
         "MIGT_200" = "Aukščiau 200% medianos",
-        "MIGT_100_LE150" = "Aukščiau 100-150% medianos"
+        "MIGT_100_LE150" = "100-150% medianos"
       )) +
       
       labs(
